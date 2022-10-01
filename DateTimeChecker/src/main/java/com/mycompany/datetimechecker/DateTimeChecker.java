@@ -11,15 +11,11 @@ package com.mycompany.datetimechecker;
  */
 
 import com.microsoft.playwright.*;
+import static com.mycompany.datetimechecker.GetDirectory.DIR;
 
 public class DateTimeChecker {
 
     public static void main(String[] args) {
-    try (Playwright playwright = Playwright.create()) {
-      Browser browser = playwright.chromium().launch();
-      Page page = browser.newPage();
-      page.navigate("http://playwright.dev");
-      System.out.println(page.title());
-    }
+        System.out.println(DIR);
   }
 }

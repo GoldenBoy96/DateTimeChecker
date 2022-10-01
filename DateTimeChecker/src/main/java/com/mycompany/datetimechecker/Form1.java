@@ -177,6 +177,8 @@ public class Form1 extends javax.swing.JFrame {
         });
 
         jLogo.setIcon(new javax.swing.ImageIcon(DIR + "img\\FPTU_logo.png")); // NOI18N
+        System.out.println(DIR + "img\\FPTU_logo.png");
+        
 
         javax.swing.GroupLayout jBackgroundLayout = new javax.swing.GroupLayout(jBackground);
         jBackground.setLayout(jBackgroundLayout);
