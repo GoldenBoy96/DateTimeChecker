@@ -41,7 +41,7 @@ public class Form1 extends javax.swing.JFrame {
         });
     }
 
-    private int daysInMonth(int month, int year) {
+    public int daysInMonth(int month, int year) {
         Integer thirtyOneDays[] = {1, 3, 5, 7, 8, 10, 12};
         Integer thirtyDays[] = {4, 6, 9, 11};
         if (Arrays.asList(thirtyOneDays).contains(month)) {
@@ -62,7 +62,7 @@ public class Form1 extends javax.swing.JFrame {
         return 0;
     }
 
-    private boolean isValidDate(int day, int month, int year) {
+    public boolean isValidDate(int day, int month, int year) {
         if (month >= 1 && month <= 12) {
             if (day >= 1) {
                 if (day <= daysInMonth(month, year)) {
