@@ -10,7 +10,6 @@ package com.mycompany.datetimechecker;
  * @author Huu Minh
  */
 
-import com.microsoft.playwright.*;
 import static com.mycompany.datetimechecker.GetDirectory.DIR;
 
 public class DateTimeChecker {

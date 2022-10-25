@@ -7,7 +7,11 @@ package com.mycompany.datetimechecker;
 import static com.mycompany.datetimechecker.GetDirectory.DIR;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,10 +21,16 @@ import javax.swing.JOptionPane;
  */
 public class Form1 extends javax.swing.JFrame {
 
+    Logger logger = Logger.getLogger(Form1.class.getName());
+    FileHandler fileHandler;
+
+    public String message = "";
+
     /**
      * Creates new form Form1_old
      */
-    public Form1() {
+    public Form1() throws IOException {
+        //this.fileHandler = new FileHandler("log\\app.log", true);
         initComponents();
         closeConfirm();
     }
@@ -41,7 +51,14 @@ public class Form1 extends javax.swing.JFrame {
         });
     }
 
-    public int daysInMonth(int month, int year) {
+    public int daysInMonth(int month, int year) throws Exception {
+        if (month < 1 || month > 12) {
+            //logger.log(Level.ALL, "Please input month >= 1 and <= 12");
+            throw new Exception("OutOfRangeException");
+        } else if (year < 1000 || year > 3000) {
+            //logger.log(Level.ALL, "Please input year >= 1000 and <= 3000");
+            throw new Exception("OutOfRangeException");
+        }
         Integer thirtyOneDays[] = {1, 3, 5, 7, 8, 10, 12};
         Integer thirtyDays[] = {4, 6, 9, 11};
         if (Arrays.asList(thirtyOneDays).contains(month)) {
@@ -57,12 +74,18 @@ public class Form1 extends javax.swing.JFrame {
                 return 28;
             } else if (year % 4 == 0) {
                 return 29;
-            } else return 28;
+            } else {
+                return 28;
+            }
         }
+        
         return 0;
     }
 
-    public boolean isValidDate(int day, int month, int year) {
+    public boolean isValidDate(int day, int month, int year) throws Exception {
+        if (day < 1 || day > 31) {
+            throw new Exception("OutOfRangeException");
+        } 
         if (month >= 1 && month <= 12) {
             if (day >= 1) {
                 if (day <= daysInMonth(month, year)) {
@@ -153,7 +176,11 @@ public class Form1 extends javax.swing.JFrame {
         jCheck.setText("Check");
         jCheck.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckMouseClicked(evt);
+                try {
+                    jCheckMouseClicked(evt);
+                } catch (Exception ex) {
+                    Logger.getLogger(Form1.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         jCheck.addActionListener(new java.awt.event.ActionListener() {
@@ -178,155 +205,167 @@ public class Form1 extends javax.swing.JFrame {
 
         jLogo.setIcon(new javax.swing.ImageIcon(DIR + "img\\FPTU_logo.png")); // NOI18N
         System.out.println(DIR + "img\\FPTU_logo.png");
-        
 
         javax.swing.GroupLayout jBackgroundLayout = new javax.swing.GroupLayout(jBackground);
         jBackground.setLayout(jBackgroundLayout);
         jBackgroundLayout.setHorizontalGroup(
-            jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jBackgroundLayout.createSequentialGroup()
-                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jBackgroundLayout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jBackgroundLayout.createSequentialGroup()
-                            .addGap(66, 66, 66)
-                            .addComponent(jTitle))
-                        .addGroup(jBackgroundLayout.createSequentialGroup()
-                            .addGap(118, 118, 118)
-                            .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jMonth)
-                                .addComponent(jDay)
-                                .addComponent(jYear))
-                            .addGap(26, 26, 26)
-                            .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jInputYear, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jInputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jInputDay, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jBackgroundLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jClear, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                        .addGap(24, 24, 24)
+                                                        .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                        .addGap(66, 66, 66)
+                                                        .addComponent(jTitle))
+                                                .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                        .addGap(118, 118, 118)
+                                                        .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jMonth)
+                                                                .addComponent(jDay)
+                                                                .addComponent(jYear))
+                                                        .addGap(26, 26, 26)
+                                                        .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jInputYear, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jInputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jInputDay, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                .addGap(102, 102, 102)
+                                                .addComponent(jClear, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(96, Short.MAX_VALUE))
         );
         jBackgroundLayout.setVerticalGroup(
-            jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackgroundLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTitle)
-                .addGap(30, 30, 30)
-                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jBackgroundLayout.createSequentialGroup()
-                        .addComponent(jInputDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jInputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jInputYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jBackgroundLayout.createSequentialGroup()
-                        .addComponent(jDay)
-                        .addGap(27, 27, 27)
-                        .addComponent(jMonth)
-                        .addGap(29, 29, 29)
-                        .addComponent(jYear)))
-                .addGap(41, 41, 41)
-                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jClear)
-                    .addComponent(jCheck))
-                .addContainerGap(63, Short.MAX_VALUE))
+                jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackgroundLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTitle)
+                                .addGap(30, 30, 30)
+                                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                .addComponent(jInputDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jInputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(jInputYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jBackgroundLayout.createSequentialGroup()
+                                                .addComponent(jDay)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jMonth)
+                                                .addGap(29, 29, 29)
+                                                .addComponent(jYear)))
+                                .addGap(41, 41, 41)
+                                .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jClear)
+                                        .addComponent(jCheck))
+                                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void jClearActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void jClearActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                      
+    }
 
-    private void jCheckActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void jCheckActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                      
+    }
 
-    private void jInputDayActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jInputDayActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void jInputYearActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jInputYearActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                          
+    }
 
-    private void jInputMonthActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void jInputMonthActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                           
+    }
 
-    private void jClearMouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void jClearMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         jInputDay.setText("");
         jInputMonth.setText("");
         jInputYear.setText("");
-    }                                   
+    }
 
-    private void jCheckMouseClicked(java.awt.event.MouseEvent evt) {                                    
+    public void jCheckMouseClicked(java.awt.event.MouseEvent evt) throws Exception {
         // TODO add your handling code here:
         Integer day;
         Integer month;
         Integer year;
+
         try {
             day = Integer.parseInt(jInputDay.getText().trim());
             if (day < 1 || day > 31) {
-                errorMessage("Input data for Day is out of range!");
+                message = "Input data for Day is out of range!";
+                errorMessage(message);
                 return;
             }
         } catch (NumberFormatException e) {
-            errorMessage("Input data for Day is incorrect format!");
+            message = "Input data for Day is incorrect format!";
+            errorMessage(message);
             return;
         }
         try {
             month = Integer.parseInt(jInputMonth.getText().trim());
             if (month < 1 || month > 12) {
-                errorMessage("Input data for Month is out of range!");
+                message = "Input data for Month is out of range!";
+                errorMessage(message);
                 return;
             }
         } catch (NumberFormatException e) {
-            errorMessage("Input data for Month is incorrect format!");
+            message = "Input data for Month is incorrect format!";
+            errorMessage(message);
             return;
         }
         try {
             year = Integer.parseInt(jInputYear.getText().trim());
             if (year < 1000 || year > 3000) {
-                errorMessage("Input data for Year is out of range!");
+                message = "Input data for Year is out of range!";
+                errorMessage(message);
                 return;
             }
         } catch (NumberFormatException e) {
-            errorMessage("Input data for Year is incorrect format!");
+            message = "Input data for Year is incorrect format!";
+            errorMessage(message);
             return;
         }
-        message(day, month, year);
-    }                                   
+        message = message(day, month, year);
+    }
 
     private void errorMessage(String error) {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.OK_OPTION);
     }
 
-    private void message(int day, int month, int year) {
+    private String message(int day, int month, int year) throws Exception {
         String format = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year) + " ";
+        message = "";
         if (isValidDate(day, month, year)) {
-            JOptionPane.showMessageDialog(null, format + "is correct date time!", "Message", JOptionPane.INFORMATION_MESSAGE);
-        } else JOptionPane.showMessageDialog(null, format + "is NOT correct date time!", "Message", JOptionPane.INFORMATION_MESSAGE);
+            message = format + "is correct date time!";
+            JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            message = format + "is NOT correct date time!";
+            JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return message;
     }
 
     /**
