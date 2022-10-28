@@ -1,4 +1,34 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.datetimechecker.IsValidDateTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.554 s - in com.mycompany.datetimechecker.IsValidDateTest
+Tests run: 16, Failures: 5, Errors: 1, Skipped: 0, Time elapsed: 0.581 s <<< FAILURE! - in com.mycompany.datetimechecker.IsValidDateTest
+testUTCID01  Time elapsed: 0.361 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID01(IsValidDateTest.java:34)
+
+testUTCID02  Time elapsed: 0.016 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID02(IsValidDateTest.java:39)
+
+testUTCID03  Time elapsed: 0.015 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID03(IsValidDateTest.java:44)
+
+testUTCID05  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.Exception: OutOfRangeException
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID05(IsValidDateTest.java:54)
+
+testUTCID06  Time elapsed: 0.015 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID06(IsValidDateTest.java:59)
+
+testUTCID09  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID09(IsValidDateTest.java:79)
+

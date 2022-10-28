@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.datetimechecker.IsValidDateTest" time="0.554" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.datetimechecker.IsValidDateTest" time="0.581" tests="16" errors="1" skipped="0" failures="5">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -19,7 +19,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_202\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\HUUMIN~1\AppData\Local\Temp\surefire7740502030427647425\surefirebooter2511961944716867072.jar C:\Users\Huu Minh\AppData\Local\Temp\surefire7740502030427647425 2022-10-22T22-32-44_799-jvmRun1 surefire941279572269663696tmp surefire_01457784551685928252tmp"/>
+    <property name="sun.java.command" value="C:\Users\HUUMIN~1\AppData\Local\Temp\surefire1833310122923349772\surefirebooter2322775338476315705.jar C:\Users\Huu Minh\AppData\Local\Temp\surefire1833310122923349772 2022-10-25T23-20-33_820-jvmRun1 surefire5667674160607592166tmp surefire_01985996705875894981tmp"/>
     <property name="test" value="com.mycompany.datetimechecker.IsValidDateTest"/>
     <property name="surefire.test.class.path" value="D:\Desktop\FPT_chuyen_nganh\CN5\SWT301\Labs\DateTimeChecker\DateTimeChecker\target\test-classes;D:\Desktop\FPT_chuyen_nganh\CN5\SWT301\Labs\DateTimeChecker\DateTimeChecker\target\classes;C:\Users\Huu Minh\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\Huu Minh\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Huu Minh\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\Huu Minh\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\Huu Minh\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\Huu Minh\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\HUUMIN~1\AppData\Local\Temp\surefire7740502030427647425\surefirebooter2511961944716867072.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\HUUMIN~1\AppData\Local\Temp\surefire1833310122923349772\surefirebooter2322775338476315705.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_202\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_202\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_202\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -64,20 +64,50 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testUTCID01" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.351"/>
-  <testcase name="testUTCID02" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.012"/>
-  <testcase name="testUTCID03" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.013"/>
-  <testcase name="testUTCID04" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.014"/>
-  <testcase name="testUTCID05" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.013"/>
-  <testcase name="testUTCID06" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.011"/>
-  <testcase name="testUTCID07" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.012"/>
-  <testcase name="testUTCID08" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.012"/>
-  <testcase name="testUTCID09" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.013"/>
-  <testcase name="testUTCID10" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.015"/>
-  <testcase name="testUTCID11" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.013"/>
-  <testcase name="testUTCID12" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.011"/>
-  <testcase name="testUTCID13" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.011"/>
-  <testcase name="testUTCID14" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.014"/>
-  <testcase name="testUTCID15" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.013"/>
-  <testcase name="testUTCID016" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.012"/>
+  <testcase name="testUTCID01" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.361">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID01(IsValidDateTest.java:34)
+]]></failure>
+  </testcase>
+  <testcase name="testUTCID02" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.016">
+    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID02(IsValidDateTest.java:39)
+]]></failure>
+  </testcase>
+  <testcase name="testUTCID03" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.015">
+    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID03(IsValidDateTest.java:44)
+]]></failure>
+  </testcase>
+  <testcase name="testUTCID04" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.032"/>
+  <testcase name="testUTCID05" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.016">
+    <error message="OutOfRangeException" type="java.lang.Exception">java.lang.Exception: OutOfRangeException
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID05(IsValidDateTest.java:54)
+</error>
+  </testcase>
+  <testcase name="testUTCID06" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.015">
+    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID06(IsValidDateTest.java:59)
+]]></failure>
+  </testcase>
+  <testcase name="testUTCID07" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.016"/>
+  <testcase name="testUTCID08" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.016"/>
+  <testcase name="testUTCID09" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0">
+    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at com.mycompany.datetimechecker.IsValidDateTest.isValidDateTest(IsValidDateTest.java:20)
+	at com.mycompany.datetimechecker.IsValidDateTest.testUTCID09(IsValidDateTest.java:79)
+]]></failure>
+  </testcase>
+  <testcase name="testUTCID10" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.024"/>
+  <testcase name="testUTCID11" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.007"/>
+  <testcase name="testUTCID12" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0"/>
+  <testcase name="testUTCID13" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0"/>
+  <testcase name="testUTCID14" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.022"/>
+  <testcase name="testUTCID15" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.01"/>
+  <testcase name="testUTCID016" classname="com.mycompany.datetimechecker.IsValidDateTest" time="0.015"/>
 </testsuite>

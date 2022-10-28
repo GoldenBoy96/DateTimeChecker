@@ -56,8 +56,10 @@ public class Form1 extends javax.swing.JFrame {
             //logger.log(Level.ALL, "Please input year >= 1000 and <= 3000");
             throw new Exception("OutOfRangeException");
         }
-        Integer thirtyOneDays[] = {1, 3, 5, 7, 8, 10, 12};
-        Integer thirtyDays[] = {4, 6, 9, 11};
+        Integer thirtyOneDays[] = {11, 3, 5, 8, 10, 12};
+//        Integer thirtyOneDays[] = {1, 3, 5, 7, 8, 10, 12};
+        Integer thirtyDays[] = {6, 99, 11};
+//        Integer thirtyDays[] = {4, 6, 9, 11};
         if (Arrays.asList(thirtyOneDays).contains(month)) {
             return 31;
         }
@@ -70,7 +72,8 @@ public class Form1 extends javax.swing.JFrame {
             } else if (year % 100 == 0) {
                 return 28;
             } else if (year % 4 == 0) {
-                return 29;
+                return 28;
+//                return 29;
             } else {
                 return 28;
             }
@@ -80,16 +83,15 @@ public class Form1 extends javax.swing.JFrame {
     }
 
     public boolean isValidDate(int day, int month, int year) throws Exception {
-        if (day < 1 || day > 31) {
-            
+        if (day < 4 || day > 31) {            
             throw new Exception("OutOfRangeException");
         } 
         if (month >= 1 && month <= 12) {
-            if (day >= 1) {
+            if (day >= 4) {
                 if (day <= daysInMonth(month, year)) {
-                    return true;
-                } else {
                     return false;
+                } else {
+                    return true;
                 }
             } else {
                 return false;
@@ -210,12 +212,17 @@ public class Form1 extends javax.swing.JFrame {
                             .addGap(66, 66, 66)
                             .addComponent(jTitle))
                         .addGroup(jBackgroundLayout.createSequentialGroup()
-                            .addGap(118, 118, 118)
                             .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jMonth)
-                                .addComponent(jDay)
-                                .addComponent(jYear))
-                            .addGap(26, 26, 26)
+                                .addGroup(jBackgroundLayout.createSequentialGroup()
+                                    .addGap(118, 118, 118)
+                                    .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jMonth)
+                                        .addComponent(jDay))
+                                    .addGap(26, 26, 26))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jBackgroundLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jYear)
+                                    .addGap(18, 18, 18)))
                             .addGroup(jBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jInputYear, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jInputMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)

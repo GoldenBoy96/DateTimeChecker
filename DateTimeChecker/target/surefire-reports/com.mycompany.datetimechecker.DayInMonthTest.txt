@@ -1,4 +1,29 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.datetimechecker.DayInMonthTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.627 s - in com.mycompany.datetimechecker.DayInMonthTest
+Tests run: 14, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.558 s <<< FAILURE! - in com.mycompany.datetimechecker.DayInMonthTest
+testUTCID01  Time elapsed: 0.353 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <31> but was: <0>
+	at com.mycompany.datetimechecker.DayInMonthTest.dayInMonthTest(DayInMonthTest.java:35)
+	at com.mycompany.datetimechecker.DayInMonthTest.testUTCID01(DayInMonthTest.java:54)
+
+testUTCID04  Time elapsed: 0.011 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <30> but was: <0>
+	at com.mycompany.datetimechecker.DayInMonthTest.dayInMonthTest(DayInMonthTest.java:35)
+	at com.mycompany.datetimechecker.DayInMonthTest.testUTCID04(DayInMonthTest.java:69)
+
+testUTCID06  Time elapsed: 0.009 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <29> but was: <28>
+	at com.mycompany.datetimechecker.DayInMonthTest.dayInMonthTest(DayInMonthTest.java:35)
+	at com.mycompany.datetimechecker.DayInMonthTest.testUTCID06(DayInMonthTest.java:79)
+
+testUTCID11  Time elapsed: 0.013 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <30> but was: <0>
+	at com.mycompany.datetimechecker.DayInMonthTest.dayInMonthTest(DayInMonthTest.java:35)
+	at com.mycompany.datetimechecker.DayInMonthTest.testUTCID11(DayInMonthTest.java:118)
+
+testUTCID12  Time elapsed: 0.015 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <31> but was: <0>
+	at com.mycompany.datetimechecker.DayInMonthTest.dayInMonthTest(DayInMonthTest.java:35)
+	at com.mycompany.datetimechecker.DayInMonthTest.testUTCID12(DayInMonthTest.java:123)
+
