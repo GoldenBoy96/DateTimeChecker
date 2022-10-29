@@ -26,7 +26,7 @@ public class Form1 extends javax.swing.JFrame {
     FileHandler fileHandler;
 
     public String message = "";
-    
+
     public Form1() {
         initComponents();
         closeConfirm();
@@ -56,42 +56,52 @@ public class Form1 extends javax.swing.JFrame {
             //logger.log(Level.ALL, "Please input year >= 1000 and <= 3000");
             throw new Exception("OutOfRangeException");
         }
-        Integer thirtyOneDays[] = {11, 3, 5, 8, 10, 12};
+//        Integer thirtyOneDays[] = {11, 3, 5, 8, 10, 12};
 //        Integer thirtyOneDays[] = {1, 3, 5, 7, 8, 10, 12};
-        Integer thirtyDays[] = {6, 99, 11};
+//        Integer thirtyDays[] = {6, 99, 11};
 //        Integer thirtyDays[] = {4, 6, 9, 11};
-        if (Arrays.asList(thirtyOneDays).contains(month)) {
-            return 31;
-        }
-        if (Arrays.asList(thirtyDays).contains(month)) {
-            return 30;
-        }
-        if (month == 2) {
-            if (year % 400 == 0) {
+//        if (Arrays.asList(thirtyOneDays).contains(month)) {
+//            return 31;
+//        }
+//        if (Arrays.asList(thirtyDays).contains(month)) {
+//            return 30;
+//        }
+
+        if (month != 2) {
+            //!bug: thang chan 30 ngay, thang le 31 ngay nen tu thang 8 tro di se co bug
+            if (month % 2 == 0) {
+                return 30;
+            } else if (month % 2 == 1) {
+                return 31;
+            }
+        } else {
+//            if (year % 400 == 0) {
+//                return 29;
+//            } else if (year % 100 == 0) {
+//                return 28;
+//            } else 
+            //!bug: cac nam chia het cho 100 nhung khong chi het cho 400 (VD: 2100) thi la nam khong nhuan
+            // nhung sua code thi no lai la nam nhuan nen cac testCase o th nay se sinh ra bug
+            if (year % 4 == 0) {
                 return 29;
-            } else if (year % 100 == 0) {
-                return 28;
-            } else if (year % 4 == 0) {
-                return 28;
 //                return 29;
             } else {
                 return 28;
             }
         }
-        
         return 0;
     }
 
     public boolean isValidDate(int day, int month, int year) throws Exception {
-        if (day < 4 || day > 31) {            
+        if (day < 0 || day > 31) { //!bug: quen check TH ngay = 0 nen o day se co bug
             throw new Exception("OutOfRangeException");
-        } 
+        }
         if (month >= 1 && month <= 12) {
-            if (day >= 4) {
+            if (day > 0) {
                 if (day <= daysInMonth(month, year)) {
-                    return false;
-                } else {
                     return true;
+                } else {
+                    return false;
                 }
             } else {
                 return false;
