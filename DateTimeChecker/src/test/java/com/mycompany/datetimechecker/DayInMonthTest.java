@@ -4,9 +4,11 @@
  */
 package com.mycompany.datetimechecker;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,127 +17,329 @@ import org.junit.jupiter.api.Test;
  */
 public class DayInMonthTest {
 
-    
-
-//    @Test
-//public void whenExceptionThrown_thenAssertionSucceeds() {
-//    Exception exception = assertThrows(NumberFormatException.class, () -> {
-//        Integer.parseInt("1a");
-//    });
-//
-//    String expectedMessage = "For input string";
-//    String actualMessage = exception.getMessage();
-//
-//    assertTrue(actualMessage.contains(expectedMessage));
-//}
-//    
-    public void dayInMonthTest(int result, int month, int year) throws IOException, Exception {
-        Form1 f = new Form1();
-
-        assertEquals(result, f.daysInMonth(month, year));
-
-    }
-
-    public void dayInMonthTest(String exception, int month, int year) throws IOException, Exception {
+    @Test
+    public void triUTCID01() throws Exception {
         Form1 f = new Form1();
         try {
-            f.daysInMonth(month, year);
+            int expect = 31;
+            int result = f.daysInMonth(1, 2020);
+            assertEquals(expect, result);
         } catch (Exception e) {
-            Assertions.assertEquals(exception, e.getMessage());
+            fail("Throw exception.");
         }
     }
 
-//    public void dayInMonthTest(int result, String month, int year) {
-//        Form1 f = new Form1();
-//        assertTrue(f.daysInMonth(month, year));
-//    }
     @Test
-    public void testUTCID01() throws Exception {
-        dayInMonthTest(31, 1, 2020);
+    public void triUTCID02() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 28;
+            int result = f.daysInMonth(2, 2021);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
 
     @Test
-    public void testUTCID02() throws Exception {
-        dayInMonthTest(28, 2, 2021);
+    public void triUTCID03() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 28;
+            int result = f.daysInMonth(2, 2019);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
-
+    
     @Test
-    public void testUTCID03() throws Exception {
-        dayInMonthTest(28, 2, 2019);
+    public void triUTCID04() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 30;
+            int result = f.daysInMonth(9, 2021);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
-
+    
     @Test
-    public void testUTCID04() throws Exception {
-        dayInMonthTest(30, 9, 2021);
+    public void triUTCID05() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 28;
+            int result = f.daysInMonth(2, 2100);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
-
+    
     @Test
-    public void testUTCID05() throws Exception {
-        dayInMonthTest(28, 2, 2100);
+    public void triUTCID06() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 29;
+            int result = f.daysInMonth(2, 2020);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
-
+    
     @Test
-    public void testUTCID06() throws Exception {
-        dayInMonthTest(29, 2, 2020);
+    public void triUTCID07() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.daysInMonth(-1, 2019);
+            fail("Not throw excepion.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
-
-    @Test
-    public void testUTCID07() throws Exception {
-
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            Form1 f = new Form1();
-            Integer month = null;
-            f.daysInMonth(month, 2019);
-        });
-        //Bởi vì hàm bình thường gặp exception sẽ không return được nên cần 
-        //bắt exception thay vì kiểm tra đầu ra
-//        Form1 f = new Form1();
-//        Integer month = null;
-//        dayInMonthTest("NullPointerException", month, 2019);
-    }
-
-    //xem lại chỗ này, chuyển thành throw exception
+    
     @Test()
-    public void testUTCID08() throws Exception {
+    public void ducUTCID08() throws Exception {
 
-        dayInMonthTest("OutOfRangeException", -1, 2019);
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(13, 2021));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID09() throws Exception {
-        dayInMonthTest("OutOfRangeException", 13, 2021);
-    }
-    //==============================================
-
-    @Test
-    public void testUTCID10() throws Exception {
-        dayInMonthTest(31, 12, 2019);
-    }
-
-    //xem lại
-    @Test
-    public void testUTCID11() throws Exception {
-        dayInMonthTest(30, 9, 1000);
+    public void ducUTCID09() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(30, form1.daysInMonth(12, 2019));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID12() throws Exception {
-        dayInMonthTest(31, 1, 3000);
-    }
-
-    //===============================================
-    //làm lại null
-//    public void testUTCID13() {
-//        dayInMonthTest(exception, 12, "");
-//    }
-    @Test
-    public void testUTCID14() throws Exception {
-        dayInMonthTest("OutOfRangeException", 9, 10);
+    public void ducUTCID10() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(30, form1.daysInMonth(10, 2500));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID15() throws Exception {
-        dayInMonthTest("OutOfRangeException", 1, 3500);
+    public void ducUTCID11() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(0, 2500));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
+
+    @Test
+    public void ducUTCID12() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(9, 2449));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void ducUTCID13() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(1, 2499));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void ducUTCID14() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(30, form1.daysInMonth(10, 2449));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void minhUTCID15() throws Exception {
+        Form1 f = new Form1();
+        assertEquals(31, f.daysInMonth(3, 2350));
+    }
+
+    @Test
+    public void minhUTCID16() {
+        Form1 f = new Form1();
+        String expectedEx = "OutOfRangeException";
+        try {
+            int a = f.daysInMonth(-1, 2012);
+            fail("Not throw exception");
+        } catch (Exception e) {
+            Assertions.assertEquals(expectedEx, e.getMessage());
+        }
+    }
+
+    @Test
+    public void minhUTCID17() throws Exception {
+        Form1 f = new Form1();
+        String expectedEx = "OutOfRangeException";
+        try {
+            int a = f.daysInMonth(0, 1000);
+            fail("Not throw exception");
+        } catch (Exception e) {
+            Assertions.assertEquals(expectedEx, e.getMessage());
+        }
+    }
+
+    @Test
+    public void minhUTCID18() throws Exception {
+        Form1 f = new Form1();
+        String expectedEx = "OutOfRangeException";
+        try {
+            int a = f.daysInMonth(1, 950);
+            fail("Not throw exception");
+        } catch (Exception e) {
+            Assertions.assertEquals(expectedEx, e.getMessage());
+        }
+    }
+
+    @Test
+    public void minhUTCID19() throws Exception {
+        Form1 f = new Form1();
+        String expectedEx = "OutOfRangeException";
+        try {
+            int a = f.daysInMonth(7, -1);
+            fail("Not throw exception");
+        } catch (Exception e) {
+            Assertions.assertEquals(expectedEx, e.getMessage());
+        }
+
+    }
+    
+    @Test
+    public void kUTCID20() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 30;
+            int result = f.daysInMonth(4, 2010);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+
+    @Test
+    public void kUTCID21() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 30;
+            int result = f.daysInMonth(6, 2012);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void kUTCID22() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 31;
+            int result = f.daysInMonth(5, 2012);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void kUTCID23() throws Exception {
+        Form1 f = new Form1();
+        try {
+            int expect = 30;
+            int result = f.daysInMonth(6, 2010);
+            assertEquals(expect, result);
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void kUTCID24() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.daysInMonth(5, 3500);
+            fail("Not throw excepion.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+
+    @Test
+    public void testUTCID25() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(3, 2350));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void testUTCID26() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(2, 3500));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+        
+    }
+
+    @Test
+    public void testUTCID27() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(7, 999));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+
+    @Test
+    public void testUTCID28() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(31, form1.daysInMonth(12, 2500));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testUTCID29() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(30, form1.daysInMonth(9, 2020));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
 
 }
