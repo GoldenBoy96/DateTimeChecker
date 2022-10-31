@@ -5,8 +5,13 @@
 package com.mycompany.datetimechecker;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,110 +20,500 @@ import org.junit.jupiter.api.Test;
  */
 public class IsValidDateTest {
 
-    public void isValidDateTest(boolean result, int day, int month, int year) throws IOException, Exception {
-        Form1 f = new Form1();
-        assertEquals(result, f.isValidDate(day, month, year));
-    }
-
-    public void isValidDateTest(String exception, int day, int month, int year) throws IOException, Exception {
+    @Test 
+    public void triUTCID01() throws Exception {
         Form1 f = new Form1();
         try {
-            f.isValidDate(day, month, year);
+            assertTrue(f.isValidDate(29, 2, 2000));
         } catch (Exception e) {
-            Assertions.assertEquals(exception, e.getMessage());
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void triUTCID02() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertFalse(f.isValidDate(29, 2, 2009));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void triUTCID03() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertFalse(f.isValidDate(31, 2, 2020));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void triUTCID04() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(0, 4, 2009);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void triUTCID05() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(1, 3, 2020));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void triUTCID06() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertFalse(f.isValidDate(30, 2, 2100));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void triUTCID07() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(32, 4, 2020);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void ducUTCID08() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(31, 4, 2100));
+        } catch (Exception e) {
+            fail(e.getMessage());
         }
     }
 
     @Test
-    public void testUTCID01() throws Exception {
-        isValidDateTest(true, 29, 2, 2000);
+    public void ducUTCID09() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(31, 7, 2009));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID02() throws Exception {
-        isValidDateTest(false, 29, 2, 2009);
+    public void ducUTCID10() {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(29, 0, 2009);
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID03() throws Exception {
-        isValidDateTest(false, 31, 2, 2020);
+    public void ducUTCID11() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(30, 13, 2111);
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID04() throws Exception {
-        isValidDateTest("OutOfRangeException", 0, 4, 2009);
+    public void ducUTCID12() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(1, 4, 2000));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID05() throws Exception {
-        isValidDateTest(true, 1, 3, 2000);
+    public void ducUTCID13() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(1, 1, 2100));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID06() throws Exception {
-        isValidDateTest(false, 30, 2, 2100);
+    public void ducUTCID14() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(15, 0, 2009));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID07() throws Exception {
-        isValidDateTest("OutOfRangeException", 32, 4, 2020);
-
+    public void ducUTCID15() {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(0, 2, 2022);
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID08() throws Exception {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            Form1 f = new Form1();
-            Integer day = null;
-            f.isValidDate(day, 3, 2009);
-        });
+    public void ducUTCID016() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(14, 8, 2022));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
-    public void testUTCID09() throws Exception {
-        isValidDateTest(false, 31, 4, 2100);
+    public void ducUTCID017() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(28, 10, 2111));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+   @Test
+    public void testUTCID15() {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(28, 10, 2111));
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void testUTCID21() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(30, 10, 2002));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUTCID22() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(31, 4, 2022));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUTCID23() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(-1, 1, 10));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void testUTCID24() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(1, -1, 10));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void testUTCID25() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(-1, -1, 2100));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void testUTCID26() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(15, 3, 2009));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUTCID27() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(29, 2, 2100));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUTCID28() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(31, 1, 2111));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testUTCID29() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(false, form1.isValidDate(0, 13, 3000));
+            fail("Exception not thrown");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+    
+    @Test
+    public void testUTCID30() throws Exception {
+        Form1 form1 = new Form1();
+        try {
+            assertEquals(true, form1.isValidDate(28, 2, 1000));
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+    
+    @Test
+    public void kUTCID31() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(-1, 8, 2009);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID10() throws Exception {
-        isValidDateTest(true, 31, 7, 2009);
+    public void kUTCID32() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(1, 8, 2020));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
 
     @Test
-    public void testUTCID11() throws Exception {
-        isValidDateTest("OutOfRangeException", 29, 0, 2009);
+    public void kUTCID33() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(31, 7, 2000));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
 
     @Test
-    public void testUTCID12() throws Exception {
-        isValidDateTest("OutOfRangeException", 30, 13, 2111);
+    public void kUTCID34() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(28, 11, 2002));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
 
     @Test
-    public void testUTCID13() throws Exception {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            Form1 f = new Form1();
-            Integer month = null;
-            f.isValidDate(29, month, 2111);
-        });
+    public void kUTCID35() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(31, 9, 2009);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID14() throws Exception {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            Form1 f = new Form1();
-            Integer year = null;
-            f.isValidDate(30, 7, year);
-        });
+    public void kUTCID36() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(29, 9, 2009));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
     }
 
     @Test
-    public void testUTCID15() throws Exception {
-        isValidDateTest("OutOfRangeException", 1, 4, 1000);
+    public void kUTCID37() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(32, 7, 2002);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
     }
 
     @Test
-    public void testUTCID016() throws Exception {
-        isValidDateTest("OutOfRangeException", 1, 1, 10);
+    public void kUTCID38() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(15, 10, 2100));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+
+    @Test
+    public void kUTCID39() throws Exception {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(0, 11, 2020);
+            fail("Not throw exception.");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "OutOfRangeException");
+        }
+    }
+
+    @Test
+    public void kUTCID40() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(1, 10, 2100));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+    
+    @Test
+    public void minhUTCID41() {
+        Form1 f = new Form1();
+        try {
+            f.isValidDate(-1, 1, 1000);
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
+    }
+
+    @Test
+    public void minhUTCID42() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(1, 2, 2000));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID43() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(1, 3, 2002));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID44() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(14, 0, 2009));
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
+    }
+
+    @Test
+    public void minhUTCID45() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(14, 4, 2009));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID46() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(2, 2, 2020));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID47() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(14, 3, 2000));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID48() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(30, 4, 1000));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID49() {
+        Form1 f = new Form1();
+        try {
+            assertFalse(f.isValidDate(31, 4, 2009));
+        } catch (Exception ex) {
+            fail("Unexpected exception was thrown");
+        }
+    }
+
+    @Test
+    public void minhUTCID50() {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(32, 4, 2100));
+            fail("Expected exception was not thrown");
+        } catch (Exception ex) {
+            assertEquals(ex.getMessage(), "OutOfRangeException");
+        }
     }
 }
