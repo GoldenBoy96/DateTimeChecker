@@ -196,13 +196,34 @@ public class IsValidDateTest {
         }
     }
     
-   @Test
-    public void testUTCID15() {
-        Form1 form1 = new Form1();
+    
+    @Test
+    public void triUTCID18() throws Exception {
+        Form1 f = new Form1();
         try {
-            assertEquals(true, form1.isValidDate(28, 10, 2111));
+            assertFalse(f.isValidDate(31, 11, 2022));
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "OutOfRangeException");
+            fail("Throw exception.");
+        }
+    }
+
+    @Test
+    public void triUTCID19() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(31, 12, 2022));
+        } catch (Exception e) {
+            fail("Throw exception.");
+        }
+    }
+
+    @Test
+    public void triUTCID20() throws Exception {
+        Form1 f = new Form1();
+        try {
+            assertTrue(f.isValidDate(31, 10, 2022));
+        } catch (Exception e) {
+            fail("Throw exception.");
         }
     }
     
