@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 public class IsValidDateTest {
 
     @Test 
-    public void triUTCID01() throws Exception {
+    public void testUTCID01() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(29, 2, 2000));
@@ -31,7 +31,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID02() throws Exception {
+    public void testUTCID02() throws Exception {
         Form1 f = new Form1();
         try {
             assertFalse(f.isValidDate(29, 2, 2009));
@@ -41,7 +41,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID03() throws Exception {
+    public void testUTCID03() throws Exception {
         Form1 f = new Form1();
         try {
             assertFalse(f.isValidDate(31, 2, 2020));
@@ -51,7 +51,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID04() throws Exception {
+    public void testUTCID04() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(0, 4, 2009);
@@ -62,7 +62,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID05() throws Exception {
+    public void testUTCID05() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(1, 3, 2020));
@@ -72,7 +72,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID06() throws Exception {
+    public void testUTCID06() throws Exception {
         Form1 f = new Form1();
         try {
             assertFalse(f.isValidDate(30, 2, 2100));
@@ -82,7 +82,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void triUTCID07() throws Exception {
+    public void testUTCID07() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(32, 4, 2020);
@@ -93,7 +93,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void ducUTCID08() throws Exception {
+    public void testUTCID08() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(31, 4, 2100));
@@ -103,7 +103,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID09() throws Exception {
+    public void testUTCID09() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(31, 7, 2009));
@@ -113,7 +113,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID10() {
+    public void testUTCID10() {
         Form1 f = new Form1();
         try {
             f.isValidDate(29, 0, 2009);
@@ -124,7 +124,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID11() throws Exception {
+    public void testUTCID11() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(30, 13, 2111);
@@ -135,7 +135,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID12() throws Exception {
+    public void testUTCID12() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(1, 4, 2000));
@@ -145,7 +145,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID13() throws Exception {
+    public void testUTCID13() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(1, 1, 2100));
@@ -155,7 +155,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID14() throws Exception {
+    public void testUTCID14() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(false, form1.isValidDate(15, 0, 2009));
@@ -166,7 +166,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID15() {
+    public void testUTCID15() {
         Form1 f = new Form1();
         try {
             f.isValidDate(0, 2, 2022);
@@ -177,7 +177,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID016() throws Exception {
+    public void testUTCID016() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(14, 8, 2022));
@@ -187,7 +187,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void ducUTCID017() throws Exception {
+    public void testUTCID017() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(true, form1.isValidDate(28, 10, 2111));
@@ -198,7 +198,7 @@ public class IsValidDateTest {
     
     
     @Test
-    public void triUTCID18() throws Exception {
+    public void testUTCID18() throws Exception {
         Form1 f = new Form1();
         try {
             assertFalse(f.isValidDate(31, 11, 2022));
@@ -208,7 +208,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void triUTCID19() throws Exception {
+    public void testUTCID19() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(31, 12, 2022));
@@ -218,7 +218,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void triUTCID20() throws Exception {
+    public void testUTCID20() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(31, 10, 2022));
@@ -332,7 +332,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void kUTCID31() throws Exception {
+    public void testUTCID31() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(-1, 8, 2009);
@@ -343,7 +343,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID32() throws Exception {
+    public void testUTCID32() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(1, 8, 2020));
@@ -353,7 +353,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID33() throws Exception {
+    public void testUTCID33() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(31, 7, 2000));
@@ -363,7 +363,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID34() throws Exception {
+    public void testUTCID34() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(28, 11, 2002));
@@ -373,7 +373,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID35() throws Exception {
+    public void testUTCID35() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(31, 9, 2009);
@@ -384,7 +384,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID36() throws Exception {
+    public void testUTCID36() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(29, 9, 2009));
@@ -394,7 +394,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID37() throws Exception {
+    public void testUTCID37() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(32, 7, 2002);
@@ -405,7 +405,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID38() throws Exception {
+    public void testUTCID38() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(15, 10, 2100));
@@ -415,7 +415,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID39() throws Exception {
+    public void testUTCID39() throws Exception {
         Form1 f = new Form1();
         try {
             f.isValidDate(0, 11, 2020);
@@ -426,7 +426,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void kUTCID40() throws Exception {
+    public void testUTCID40() throws Exception {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(1, 10, 2100));
@@ -436,7 +436,7 @@ public class IsValidDateTest {
     }
     
     @Test
-    public void minhUTCID41() {
+    public void testUTCID41() {
         Form1 f = new Form1();
         try {
             f.isValidDate(-1, 1, 1000);
@@ -447,7 +447,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID42() {
+    public void testUTCID42() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(1, 2, 2000));
@@ -457,7 +457,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID43() {
+    public void testUTCID43() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(1, 3, 2002));
@@ -467,7 +467,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID44() {
+    public void testUTCID44() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(14, 0, 2009));
@@ -478,7 +478,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID45() {
+    public void testUTCID45() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(14, 4, 2009));
@@ -488,7 +488,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID46() {
+    public void testUTCID46() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(2, 2, 2020));
@@ -498,7 +498,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID47() {
+    public void testUTCID47() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(14, 3, 2000));
@@ -508,7 +508,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID48() {
+    public void testUTCID48() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(30, 4, 1000));
@@ -518,7 +518,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID49() {
+    public void testUTCID49() {
         Form1 f = new Form1();
         try {
             assertFalse(f.isValidDate(31, 4, 2009));
@@ -528,7 +528,7 @@ public class IsValidDateTest {
     }
 
     @Test
-    public void minhUTCID50() {
+    public void testUTCID50() {
         Form1 f = new Form1();
         try {
             assertTrue(f.isValidDate(32, 4, 2100));
