@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 public class DayInMonthTest {
 
     @Test
-    public void triUTCID01() throws Exception {
+    public void testUTCID01() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 31;
@@ -30,7 +30,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void triUTCID02() throws Exception {
+    public void testUTCID02() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 28;
@@ -42,7 +42,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void triUTCID03() throws Exception {
+    public void testUTCID03() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 28;
@@ -54,7 +54,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void triUTCID04() throws Exception {
+    public void testUTCID04() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 30;
@@ -66,7 +66,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void triUTCID05() throws Exception {
+    public void testUTCID05() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 28;
@@ -78,7 +78,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void triUTCID06() throws Exception {
+    public void testUTCID06() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 29;
@@ -90,7 +90,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void triUTCID07() throws Exception {
+    public void testUTCID07() throws Exception {
         Form1 f = new Form1();
         try {
             f.daysInMonth(-1, 2019);
@@ -101,7 +101,7 @@ public class DayInMonthTest {
     }
     
     @Test()
-    public void ducUTCID08() throws Exception {
+    public void testUTCID08() throws Exception {
 
         Form1 form1 = new Form1();
         try {
@@ -113,7 +113,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID09() throws Exception {
+    public void testUTCID09() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(30, form1.daysInMonth(12, 2019));
@@ -123,7 +123,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID10() throws Exception {
+    public void testUTCID10() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(30, form1.daysInMonth(10, 2500));
@@ -133,7 +133,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID11() throws Exception {
+    public void testUTCID11() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(31, form1.daysInMonth(0, 2500));
@@ -144,7 +144,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID12() throws Exception {
+    public void testUTCID12() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(31, form1.daysInMonth(9, 2449));
@@ -154,7 +154,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID13() throws Exception {
+    public void testUTCID13() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(31, form1.daysInMonth(1, 2499));
@@ -164,7 +164,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void ducUTCID14() throws Exception {
+    public void testUTCID14() throws Exception {
         Form1 form1 = new Form1();
         try {
             assertEquals(30, form1.daysInMonth(10, 2449));
@@ -174,13 +174,13 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void minhUTCID15() throws Exception {
+    public void testUTCID15() throws Exception {
         Form1 f = new Form1();
         assertEquals(31, f.daysInMonth(3, 2350));
     }
 
     @Test
-    public void minhUTCID16() {
+    public void testUTCID16() {
         Form1 f = new Form1();
         String expectedEx = "OutOfRangeException";
         try {
@@ -192,7 +192,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void minhUTCID17() throws Exception {
+    public void testUTCID17() throws Exception {
         Form1 f = new Form1();
         String expectedEx = "OutOfRangeException";
         try {
@@ -204,7 +204,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void minhUTCID18() throws Exception {
+    public void testUTCID18() throws Exception {
         Form1 f = new Form1();
         String expectedEx = "OutOfRangeException";
         try {
@@ -216,7 +216,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void minhUTCID19() throws Exception {
+    public void testUTCID19() throws Exception {
         Form1 f = new Form1();
         String expectedEx = "OutOfRangeException";
         try {
@@ -229,7 +229,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void kUTCID20() throws Exception {
+    public void testUTCID20() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 30;
@@ -241,7 +241,7 @@ public class DayInMonthTest {
     }
 
     @Test
-    public void kUTCID21() throws Exception {
+    public void testUTCID21() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 30;
@@ -253,7 +253,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void kUTCID22() throws Exception {
+    public void testUTCID22() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 31;
@@ -265,7 +265,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void kUTCID23() throws Exception {
+    public void testUTCID23() throws Exception {
         Form1 f = new Form1();
         try {
             int expect = 30;
@@ -277,7 +277,7 @@ public class DayInMonthTest {
     }
     
     @Test
-    public void kUTCID24() throws Exception {
+    public void testUTCID24() throws Exception {
         Form1 f = new Form1();
         try {
             f.daysInMonth(5, 3500);
